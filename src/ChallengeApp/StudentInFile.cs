@@ -27,6 +27,7 @@ public class StudentInFile : StudentBase
     }
 
     public override event GradeAddedDelegate GradeAdded;
+
     public override void AddGrade(double grade)
     {
         using (var writer = File.AppendText(Name + "." + filename))

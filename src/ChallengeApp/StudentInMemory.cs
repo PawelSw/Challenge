@@ -7,6 +7,7 @@ public class StudentInMemory : StudentBase
     }
 
     public override event GradeAddedDelegate GradeAdded;
+
     public override void AddGrade(double grade)
     {
         {
