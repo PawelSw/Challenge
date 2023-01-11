@@ -4,7 +4,6 @@ public class Statistics
     public double Low;
     public double Sum;
     public int Count;
-
     public Statistics()
     {
         Sum = 0.0;
@@ -23,7 +22,6 @@ public class Statistics
     {
         get
         {
-
             switch (Average)
             {
                 case >= 6:

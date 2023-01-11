@@ -17,6 +17,7 @@ public abstract class StudentBase : NamedObject, IStudent
     public void ShowStatistics()
     {
         var stat = GetStatistics();
+
         if (stat.Count != 0)
         {
             Console.WriteLine($"{Name} statistics:");

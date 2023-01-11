@@ -3,7 +3,6 @@ public class StudentInFile : StudentBase
     private List<double> grades;
     private const string filename = "Grades.txt";
     private const string audit = "Audit.txt";
-
     public StudentInFile(string name) : base(name)
     {
         grades = new List<double>();
@@ -28,7 +27,6 @@ public class StudentInFile : StudentBase
     }
 
     public override event GradeAddedDelegate GradeAdded;
-
     public override void AddGrade(double grade)
     {
         using (var writer = File.AppendText(Name + "." + filename))
@@ -51,123 +49,87 @@ public class StudentInFile : StudentBase
             }
         }
     }
-
     public override void AddGrade(string grade)
     {
-        using (var writer = File.AppendText(Name + "." + filename))
+        if (grade == "1" || grade == "1+" || grade == "2-" || grade == "2" || grade == "2+" || grade == "3-" || grade == "3" || grade == "3+"
+        || grade == "4-" || grade == "4" || grade == "4+" || grade == "5-" || grade == "5" || grade == "5+" || grade == "6-" || grade == "6")
         {
-            using (var writer2 = File.AppendText(Name + "." + audit))
+            switch (grade)
             {
-                if (grade == "1" || grade == "1+" || grade == "2-" || grade == "2" || grade == "2+" || grade == "3-" || grade == "3" || grade == "3+"
-                || grade == "4-" || grade == "4" || grade == "4+" || grade == "5-" || grade == "5" || grade == "5+" || grade == "6-" || grade == "6")
-                {
-                    switch (grade)
-                    {
-                        case "1":
-                            writer.WriteLine(1.0);
-                            writer2.WriteLine(1.0 + " " + DateTime.UtcNow.ToString());
-                            GradeAdded(this, new EventArgs());
-                            break;
+                case "1":
+                    AddGrade(1.0);
+                    break;
 
-                        case "1+":
-                            writer.WriteLine(1.5);
-                            writer2.WriteLine(1.5 + " " + DateTime.UtcNow.ToString());
-                            GradeAdded(this, new EventArgs());
-                            break;
+                case "1+":
+                    AddGrade(1.5);
+                    break;
 
-                        case "2-":
-                            writer.WriteLine(1.75);
-                            writer2.WriteLine(1.75 + " " + DateTime.UtcNow.ToString());
-                            GradeAdded(this, new EventArgs());
-                            break;
+                case "2-":
+                    AddGrade(1.75);
+                    break;
 
-                        case "2":
-                            writer.WriteLine(2.0);
-                            writer2.WriteLine(2.0 + " " + DateTime.UtcNow.ToString());
-                            GradeAdded(this, new EventArgs());
-                            break;
+                case "2":
+                    AddGrade(2.0);
+                    break;
 
-                        case "2+":
-                            writer.WriteLine(2.5);
-                            writer2.WriteLine(2.5 + " " + DateTime.UtcNow.ToString());
-                            GradeAdded(this, new EventArgs());
-                            break;
+                case "2+":
+                    AddGrade(2.5);
+                    break;
 
-                        case "3-":
-                            writer.WriteLine(2.75);
-                            writer2.WriteLine(2.75 + " " + DateTime.UtcNow.ToString());
-                            GradeAdded(this, new EventArgs());
-                            break;
+                case "3-":
+                    AddGrade(2.75);
+                    break;
 
-                        case "3":
-                            writer.WriteLine(3.0);
-                            writer2.WriteLine(3.0 + " " + DateTime.UtcNow.ToString());
-                            GradeAdded(this, new EventArgs());
-                            break;
+                case "3":
+                    AddGrade(3.0);
+                    break;
 
-                        case "3+":
-                            writer.WriteLine(3.5);
-                            writer2.WriteLine(3.5 + " " + DateTime.UtcNow.ToString());
-                            break;
+                case "3+":
+                    AddGrade(3.5);
+                    break;
 
-                        case "4-":
-                            writer.WriteLine(3.75);
-                            writer2.WriteLine(3.75 + " " + DateTime.UtcNow.ToString());
-                            break;
+                case "4-":
+                    AddGrade(3.75);
+                    break;
 
-                        case "4":
-                            writer.WriteLine(4.0);
-                            writer2.WriteLine(4.0 + " " + DateTime.UtcNow.ToString());
-                            break;
+                case "4":
+                    AddGrade(4.0);
+                    break;
 
-                        case "4+":
-                            writer.WriteLine(4.5);
-                            writer2.WriteLine(4.5 + " " + DateTime.UtcNow.ToString());
-                            break;
+                case "4+":
+                    AddGrade(4.5);
+                    break;
 
-                        case "5-":
-                            writer.WriteLine(4.75);
-                            writer2.WriteLine(4.75 + " " + DateTime.UtcNow.ToString());
-                            break;
+                case "5-":
+                    AddGrade(4.75);
+                    break;
 
-                        case "5":
-                            writer.WriteLine(5.0);
-                            writer2.WriteLine(5.0 + " " + DateTime.UtcNow.ToString());
-                            break;
+                case "5":
+                    AddGrade(5.0);
+                    break;
 
-                        case "5+":
-                            writer.WriteLine(5.5);
-                            writer2.WriteLine(5.5 + " " + DateTime.UtcNow.ToString());
-                            break;
+                case "5+":
+                    AddGrade(5.5);
+                    break;
 
-                        case "6-":
-                            writer.WriteLine(5.75);
-                            writer2.WriteLine(5.75 + " " + DateTime.UtcNow.ToString());
-                            break;
+                case "6-":
+                    AddGrade(5.75);
+                    break;
 
-                        case "6":
-                            writer.WriteLine(6.0);
-                            writer2.WriteLine(6.0 + " " + DateTime.UtcNow.ToString());
-                            break;
+                case "6":
+                    AddGrade(6.0);
+                    break;
 
-                        default:
-                            writer.WriteLine(0.0);
-                            writer2.WriteLine(0.0 + " " + DateTime.UtcNow.ToString());
-                            break;
-
-                    }
-                }
-                else
-                {
-                    throw new ArgumentException($"Invalid out of range {nameof(grade)}.");
-
-                }
+                default:
+                    AddGrade(0.0);
+                    break;
             }
         }
+        else
+        {
+            throw new ArgumentException($"Invalid out of range {nameof(grade)}.");
+        }
     }
-
-
-
     public override Statistics GetStatistics()
     {
         var result = new Statistics();
@@ -179,10 +141,8 @@ public class StudentInFile : StudentBase
                 var number = double.Parse(line);
                 result.Add(number);
                 line = reader.ReadLine();
-
             }
         }
-
         return result;
     }
 }

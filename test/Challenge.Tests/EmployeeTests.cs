@@ -1,7 +1,4 @@
-
-
 namespace Challenge.Tests;
-
 public class EmployeeTests
 {
     [Fact]
@@ -9,17 +6,17 @@ public class EmployeeTests
     {
        //arrange
        var emp = new StudentInMemory("Paweł");
-        emp.AddGrade(24.5);
-        emp.AddGrade(35.8);
-        emp.AddGrade(46.99);
+        emp.AddGrade(1.0);
+        emp.AddGrade(2.0);
+        emp.AddGrade(3.0);
 
        //act
         var result = emp.GetStatistics();
        
 
        //assert
-        Assert.Equal(35.76, result.Average,2);
-        Assert.Equal(24.5, result.Low);
-        Assert.Equal(46.99, result.High);
+        Assert.Equal(2.0, result.Average,2);
+        Assert.Equal(1.0, result.Low);
+        Assert.Equal(3.0, result.High);
     }
 }
